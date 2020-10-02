@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const Message = require('./connection');
+const Message = require('./public/connection');
 const path = require('path');
 
 

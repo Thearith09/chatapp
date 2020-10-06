@@ -60,6 +60,7 @@
                     if (data) {
                         $('#namesWrapper').hide();
                         $('#mainWrapper').show();
+                        $('#userWrapper').show();
                     } else {
                         $('#error').html('Username is taken');
                     }
@@ -72,6 +73,7 @@
                     name: $username.val(),
                     message: $message.val()
                 });
+                document.getElementById('textarea').value = '';
             });
 
             socket.on('usernames', (data) => {

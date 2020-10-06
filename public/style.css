@@ -33,6 +33,7 @@ body {
 }
 
 #userWrapper{
+    display: none;
     border:1px #ccc solid;
     border-radius:10px;
     background:#f4f4f4;

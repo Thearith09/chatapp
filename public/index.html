@@ -37,63 +37,8 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io();
-        const $messageForm = $('#messageForm');
-        const $username = $('#username');
-        const $message = $('#textarea');
-        const $chat = $('#chatWindow');
-        const $userForm = $('#usernameForm');
-        const $users = $('#users');
-
-        $(() => {
-            $userForm.submit((e) => {
-                e.preventDefault();
-                socket.emit('new user', $username.val(), (data) => {
-                    if (data) {
-                        $('#namesWrapper').hide();
-                        $('#mainWrapper').show();
-                        $('#userWrapper').show();
-                    } else {
-                        $('#error').html('Username is taken');
-                    }
-                })
-            })
-
-            $('#send').click(() => {
-                event.preventDefault();
-                socket.emit('send message', {
-                    name: $username.val(),
-                    message: $message.val()
-                });
-                document.getElementById('textarea').value = '';
-            });
-
-            socket.on('usernames', (data) => {
-                let html = '';
-                for (let i = 0; i < data.length; i++) {
-                    html += data[i] + '<br>';
-                }
-                $users.html(html);
-            });
-
-            socket.on('new message', ({ name, message }) => {
-                $chat.append(`<h4> ${name}: <span> ${message} </span></h4>`);
-            });
-
-            socket.emit('disconnect', () => {
-
-            })
-
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 
 </html>

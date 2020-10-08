@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
 		io.emit('usernames', usernames);
 	}
 
-	socket.on('send message', async ({ name, message }) => {
+	socket.on('send message', async ({ name, message } = {}) => {
 		try {
 			const msg = new Message({
 				name,
@@ -42,7 +42,7 @@ io.on('connection', (socket) => {
 			const savedMessage = await msg.save();
 			console.log('Message has been saved.');
 
-			io.emit('new message', { name, message });
+			socket.broadcast.emit('new message', msg);
 
 		} catch (error) {
 			return console.log('Error: ', error);

@@ -3,15 +3,26 @@ body {
     box-sizing: border-box;
 }
 #container{
-    width:800px;
     margin:0 auto;
 }
 
-#chatWindow{
-    height:400px;
-    width:  800px;
-    overflow: auto;
 
+#chatWindow {
+    overflow-y: auto;
+}
+
+#chatWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height:50vh;
+    width: 100%;
+    max-width: 600px;
+    border:1px #ccc solid;
+    border-radius:10px;
+    background:#f4f4f4;
+    padding:10px;
+    
 }
 
 #mainWrapper{
@@ -22,14 +33,6 @@ body {
     margin-top: -400px;
     margin-left: -400px;
     
-}
-
-#chatWrapper{
-    float:left;
-    border:1px #ccc solid;
-    border-radius:10px;
-    background:#f4f4f4;
-    padding:10px;
 }
 
 #userWrapper{
@@ -43,9 +46,9 @@ body {
     max-height:300px;
     position: absolute;
     top: 30%;
-    left: 67%;
-    margin-top: -100px;
-    overflow: auto;
+    left: 62%;
+    margin-top: -110px;
+    overflow-y: auto;
 }
 
 #namesWrapper{
@@ -60,7 +63,6 @@ body {
     left: 50%;
     margin-top: -100px;
     margin-left: -50px;
-    
 }
 
 input{
@@ -68,19 +70,35 @@ input{
     border:solid 1px #ccc;
 }
 #send {
+    width: 25px;
     float: right;
-    clear: both;
-    padding: 10px;
-    color: #ece5e8;
-    background: #7612da;
+    padding: 7px 10px;
 }
-h2 {
+
+.message {
+    padding: 10px;
+    border-radius: 20px;
+    display: table;
+    margin-bottom: 40px;
+}
+
+.incoming {
+    background: #656568;
+    color: #fff;  
+}
+
+.outgoing {
+    background: #e5e5e9;
+    color: #3c3c41;
+    margin-left: auto;
+}
+#mainWrapper h2 {
+    border-radius:10px;
+    text-align: center;
     background: #f4f4f4;
-    padding: 10px;
+    padding: 5px;
 }
-h4 {
-    color: #7612da;
-}
-span {
-    color: #333333;
+#textarea {
+    border-radius: 10px;
+    padding-top: 10px;
 }

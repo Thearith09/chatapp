@@ -1,8 +1,8 @@
 (() => {
     const socket = io();
     const username = document.querySelector('#username');
-    const message = document.querySelector('#textarea');
-    const chat = document.querySelector('#chatWindow');
+    const textarea = document.querySelector('#textarea');
+    const chatArea = document.querySelector('#chatWindow');
     const userForm = document.querySelector('#usernameForm');
     const users = document.querySelector('#users');
     const send = document.querySelector('#send');
@@ -20,13 +20,18 @@
         })
     })
 
-    send.addEventListener('click', () => {
-        event.preventDefault();
-        socket.emit('send message', {
+    send.addEventListener('click', (e) => {
+        e.preventDefault();
+        const msg = {
             name: username.value,
-            message: message.value
-        });
-        message.value = '';
+            message: textarea.value.trim()
+        }
+
+        appendMessage(msg, 'outgoing');
+        textarea.value = '';
+        scrollToBottom();
+
+        socket.emit('send message', msg);
     });
 
     socket.on('usernames', (data) => {
@@ -37,12 +42,38 @@
         users.innerHTML = user;
     });
 
-    socket.on('new message', ({ name, message }) => {
-        chat.innerHTML += `<h4> ${name}: <span> ${message} </span></h4>`;
+    socket.on('new message', (msg) => {
+        appendMessage(msg, 'incoming');
+        scrollToBottom();
     });
 
     socket.emit('disconnect', () => {
 
     })
+
+    function appendMessage({ name, message } = {}, type) {
+        let div = document.createElement('div');
+        div.classList.add(type, 'message');
+
+        let markup;
+
+        if (type === 'outgoing') {
+            markup = `
+                <h4>${message} :<span>${name}</span> </h4>
+            `
+        } else {
+            markup = `
+                <h4>${name}: <span>${message}</span> </h4>
+            `
+        }
+
+
+        div.innerHTML = markup;
+        chatArea.appendChild(div);
+    }
+
+    function scrollToBottom() {
+        chatArea.scrollTop = chatArea.scrollHeight;
+    }
 
 })();

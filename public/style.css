@@ -21,7 +21,6 @@ body {
     border:1px #ccc solid;
     border-radius:10px;
     background:#f4f4f4;
-    padding:10px;
     
 }
 
@@ -32,7 +31,6 @@ body {
     left: 50%;
     margin-top: -400px;
     margin-left: -400px;
-    
 }
 
 #userWrapper{
@@ -76,7 +74,6 @@ input{
 }
 
 .message {
-    padding: 10px;
     border-radius: 20px;
     display: table;
     margin-bottom: 40px;
@@ -103,9 +100,9 @@ input{
     padding-top: 10px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 640px) {
     body {
-        background: black;
+        background: blue;
     }
 
     #namesWrapper{
@@ -118,6 +115,7 @@ input{
 
     #mainWrapper{
         padding-left: 187px;
+        padding-top: 300px;
     }
 
     #textarea {
@@ -125,12 +123,12 @@ input{
     }
 
     #userWrapper{
-        top: 20%;
+        top: 35%;
         left: 1%;
     }
 }
 
-@media screen and (min-width: 481px) {
+/* @media screen and (min-width: 481px) {
     body {
         background: purple;
     }
@@ -209,5 +207,5 @@ input{
         top: 30%;
         left: 20%;
     }
-}
+} */
 

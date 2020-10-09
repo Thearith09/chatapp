@@ -110,16 +110,16 @@ input{
     }
 
     #chatWrapper{
-        max-width: 400px;
+        max-width: 300px;
     }
 
     #mainWrapper{
-        padding-left: 187px;
-        padding-top: 300px;
+        padding-left: 40%;
+        padding-top: 60%;
     }
 
     #textarea {
-        max-width: 345px;
+        max-width: 245px;
     }
 
     #userWrapper{
